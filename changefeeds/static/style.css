@@ -1,0 +1,28 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+ol#output {
+    padding: 20px 30px;
+    padding-left: 25px;
+    border: 1px solid #888;
+    border-radius: 4px;
+}
+
+ol li {
+    margin: 10px;
+    background-color: white;
+}
+
+li>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.score {
+    padding: 3px;
+    background-color: #fee;
+}

@@ -1,0 +1,4 @@
+rethinkdb_data
+*.pyc
+*.egg-info
+.#*
