@@ -38,8 +38,8 @@
         },
         onupdate: function(newval, oldval){
             console.log('changed an element')
-            this.collection.add(newval, {merge: true})
             this.collection.remove(oldval)
+            this.collection.add(newval, {merge: true})
             this.render()
         },
         oncreate: function(value){
