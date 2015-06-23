@@ -2,12 +2,12 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 
 ol#output {
-    padding: 20px 30px;
-    padding-left: 25px;
+    padding: 20px 10px 20px 25px;
     border: 1px solid #888;
     border-radius: 4px;
 }
@@ -22,7 +22,20 @@ li>div {
     justify-content: space-between;
 }
 
+li>div * {
+    margin-left: 10;
+    margin-right: 10;
+}
+
 .score {
     padding: 3px;
     background-color: #fee;
+}
+
+.species {
+    border-radius: 3px;
+    padding: 2px;
+    border: 1px solid #ddd;
+    background-color: #eee;
+    align-self: end;
 }

@@ -16,23 +16,18 @@ def styles(path):
     return send_from_directory('static', path)
 
 
-@app.route('/character/<char_id>')
-def update_character():
-    data = json.loads(request.body)
-    # TODO: update in rethinkdb
-
-@app.route('/sse_notify')
+@app.route('/top_twenty')
 def sse_notify():
     print 'Opening an SSE feed'
-    return Response(event_stream(), mimetype='text/event-stream')
+    return Response(top_twenty_score_stream(), mimetype='text/event-stream')
 
 
-def top_twenty_changes():
+def top_twenty_score_stream():
     '''Generator for changes to top twenty scoring characters'''
     conn = r.connect()
-    query = None #TODO: write query
+    query = None  # TODO: write query
     try:
-        for result in query.run(conn, time_format='raw'):
+        for result in query.run(conn):
             yield 'data: %s\n\n' % json.dumps(result)
     except Exception as e:
         print 'Failed with %s' % e
