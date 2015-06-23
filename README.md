@@ -12,7 +12,7 @@ r.table('characters').indexCreate('team_id')
 r.table('characters').insert(r.http("https://goo.gl/j0rb2x", {resultFormat: 'json'}))
 
 r.tableCreate('teams')
-r.table('teams')
+r.table('teams').indexCreate('attributes', {multi: true}) // team attributes
 r.table("teams").insert(r.http("https://goo.gl/CYaNrC", {resultFormat: 'json'}))
 ```
 
