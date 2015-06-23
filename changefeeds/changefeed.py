@@ -33,7 +33,7 @@ def top_twenty_score_stream():
         print 'Failed with %s' % e
         yield 'ERROR\n\n'
         conn.close()
-        raise
+        raise e
 
 
 if __name__ == '__main__':
