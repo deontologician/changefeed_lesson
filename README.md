@@ -5,13 +5,13 @@ running). Go to http://localhost:8080/#dataexplorer and run these
 queries to create the tables (hit the "Run" button between each query)
 
 ```js
-r.createTable('characters')
-r.table('characters').createIndex('score') // creates an index for each character's score
-r.table('characters').createIndex('species', {multi: true}) // creates an index entry for each species
-r.table('characters').createIndex('team_id')
+r.tableCreate('characters')
+r.table('characters').indexCreate('score') // creates an index for each character's score
+r.table('characters').indexCreate('species', {multi: true}) // creates an index entry for each species
+r.table('characters').indexCreate('team_id')
 r.table('characters').insert(r.http("https://goo.gl/j0rb2x", {resultFormat: 'json'}))
 
-r.createTable('teams')
+r.tableCreate('teams')
 r.table('teams')
 r.table("teams").insert(r.http("https://goo.gl/CYaNrC", {resultFormat: 'json'}))
 ```
