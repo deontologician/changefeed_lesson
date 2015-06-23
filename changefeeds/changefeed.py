@@ -16,8 +16,10 @@ def styles(path):
     return send_from_directory('static', path)
 
 
-@app.route('/character/update')
-def update_character
+@app.route('/character/<char_id>')
+def update_character():
+    data = json.loads(request.body)
+    # TODO: update in rethinkdb
 
 @app.route('/sse_notify')
 def sse_notify():
@@ -25,17 +27,15 @@ def sse_notify():
     return Response(event_stream(), mimetype='text/event-stream')
 
 
-def event_stream():
-    '''Generator that sends events to the client'''
+def top_twenty_changes():
+    '''Generator for changes to top twenty scoring characters'''
     conn = r.connect()
-    query = r.table('characters') \
-             .order_by(index=r.desc('score')) \
-             .limit(10).changes()
+    query = None #TODO: write query
     try:
         for result in query.run(conn, time_format='raw'):
             yield 'data: %s\n\n' % json.dumps(result)
     except Exception as e:
-        print 'Aw dangit. Failed with %s' % e
+        print 'Failed with %s' % e
         yield 'ERROR\n\n'
         conn.close()
         raise
